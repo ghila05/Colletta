@@ -17,7 +17,7 @@ namespace Colletta
             InitializeComponent();
         }
         public bool first = true;
-        Dictionary<string, double> accounts = new Dictionary<string, double>();
+        Dictionary<string, string> accounts = new Dictionary<string, string>();
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -30,16 +30,16 @@ namespace Colletta
 
                 listView1.Columns.Add("UTENTI", 200);
                 listView1.Columns.Add("QUOTA", 80);
-                
+                listView1.Columns.Add("TOT");
 
             }
 
 
-            accounts.Add("NICOLA", 0);
-            accounts.Add("FRED", 0);
-            accounts.Add("OLPROFESUR", 0);
-            accounts.Add("MARCO", 0);
-
+            accounts.Add("NICOLA", "");
+            accounts.Add("FRED", "");
+            accounts.Add("OLPROFESUR", "");
+            accounts.Add("MARCO", "");
+            
 
             Stampa();
 
@@ -49,10 +49,10 @@ namespace Colletta
         public void Stampa()
         {
             listView1.Items.Clear();
-            foreach (KeyValuePair<string, double> kvp in accounts)
+            foreach (KeyValuePair<string, string> kvp in accounts)
             {
                 ListViewItem item = new ListViewItem(kvp.Key);
-                item.SubItems.Add(kvp.Value.ToString());
+                item.SubItems.Add(kvp.Value);
                 listView1.Items.Add(item);
 
             }
@@ -63,20 +63,19 @@ namespace Colletta
         private void button1_Click(object sender, EventArgs e)
         {
             string ut;
-            double quota=0;
+            string quota="";
+
+
+
 
             ut = textBox1.Text;
-            quota = Double.Parse(textBox2.Text);
-            if (quota > 0)
-            {
-                accounts[ut.ToUpper()] += quota;
-                Stampa();
-            }
-            else
-            {
+            
+            quota += textBox2.Text;
+            quota += ";";
+            accounts[ut.ToUpper()] += quota;
+            Stampa();
+        
 
-                throw new Exception("Quota non valida");
-            }
             
 
 
