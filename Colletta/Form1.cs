@@ -41,7 +41,43 @@ namespace Colletta
             accounts.Add("MARCO", 0);
 
 
+            Stampa();
 
+
+        }
+
+        public void Stampa()
+        {
+            listView1.Items.Clear();
+            foreach (KeyValuePair<string, double> kvp in accounts)
+            {
+                ListViewItem item = new ListViewItem(kvp.Key);
+                item.SubItems.Add(kvp.Value.ToString());
+                listView1.Items.Add(item);
+
+            }
+        }
+       
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string ut;
+            double quota=0;
+
+            ut = textBox1.Text;
+            quota = Double.Parse(textBox2.Text);
+            if (quota > 0)
+            {
+                accounts[ut.ToUpper()] += quota;
+                Stampa();
+            }
+            else
+            {
+
+                throw new Exception("Quota non valida");
+            }
+            
 
 
         }
