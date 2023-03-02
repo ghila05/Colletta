@@ -48,24 +48,36 @@ namespace Colletta
 
         public void Stampa()
         {
+
+
             listView1.Items.Clear();
             foreach (KeyValuePair<string, string> kvp in accounts)
             {
                 ListViewItem item = new ListViewItem(kvp.Key);
                 item.SubItems.Add(kvp.Value);
+                //item.SubItems.Add()
                 listView1.Items.Add(item);
 
             }
+
+
+           
         }
-       
+        /*
+        public string Somma()
+        {
+        
 
 
-        private void button1_Click(object sender, EventArgs e)
+
+        }
+       */
+
+
+        private void button1_Click(object sender, EventArgs e) //button add
         {
             string ut;
             string quota="";
-
-
 
 
             ut = textBox1.Text;
@@ -75,9 +87,27 @@ namespace Colletta
             accounts[ut.ToUpper()] += quota;
             Stampa();
         
+        }
 
-            
+        private void button2_Click(object sender, EventArgs e)//button Elimina
+        {
+            string tot="";
+            //acquisisco vaalori del dizionario della riga selezionata
+            string ut = listView1.SelectedItems[0].SubItems[0].Text;
+            string quote = listView1.SelectedItems[0].SubItems[1].Text;
+            MessageBox.Show("quote" + quote);
 
+            string[] q = new string [100];
+            q = quote.Split(';');
+      
+            //ristampo tutte le quote tranne l'ultima
+            for(int i=0; i < q.Length - 2; i++)
+            {
+                tot = tot + q[i] + ";";
+            }
+ 
+            accounts[ut] = tot;
+            Stampa();
 
         }
     }
