@@ -71,6 +71,10 @@ namespace Colletta
             string quota="";
             ut = comboBox1.Text;
             quota += textBox2.Text;
+            if (Double.Parse(quota) < 0)
+            {
+                throw new Exception("invalid value");
+            }
             accounts[ut] += Double.Parse(quota);
 
             Add();
@@ -84,6 +88,7 @@ namespace Colletta
             string tot="";
             string ut = listView1.SelectedItems[0].SubItems[0].Text;
             string quote = listView1.SelectedItems[0].SubItems[1].Text;
+
 
             accounts[ut] -= Double.Parse(quote);
 
@@ -107,11 +112,14 @@ namespace Colletta
             double quote = Double.Parse(listView1.SelectedItems[0].SubItems[1].Text);
             double newq = 0;
             newq = Double.Parse(textBox2.Text);
-
+            if (newq < 0)
+            {
+                throw new Exception("invalid value");
+            }
 
             quote -= newq;
 
-            MessageBox.Show(Convert.ToString(quote));
+            //MessageBox.Show(Convert.ToString(quote));
 
             if (quote < 0)
             {
