@@ -18,6 +18,10 @@ namespace Colletta
         }
         public bool first = true;
         Dictionary<string, double> accounts = new Dictionary<string, double>();
+
+
+        Dictionary<Persona, Soldi> account = new Dictionary<Persona, Soldi>();
+
         double tot;
 
         private void Form1_Load(object sender, EventArgs e)
