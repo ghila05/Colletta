@@ -22,10 +22,16 @@ namespace Colletta
 
         Dictionary<Persona, Soldi> account = new Dictionary<Persona, Soldi>();
 
+
+        Persona p;
+        Soldi s;
+
+
         double tot;
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             if (first)//solo la prima volta che apro il programma
             {
                 listView1.View = View.Details;
@@ -37,24 +43,28 @@ namespace Colletta
 
 
             }
-
-
-            accounts.Add("NICOLA", 0);
-            accounts.Add("FRED", 0);
-            accounts.Add("OLPROFESUR", 0);
-            accounts.Add("MARCO", 0);
             
-
-
 
         }
 
         public void Add()
         {
+            MessageBox.Show("helooo");
+            string v = comboBox_Currency.Text;
+            
+            ListViewItem item = new ListViewItem(Txt_Nome.Text);
+            item.SubItems.Add(Txt_quote.Text +" "+ v);
+            listView1.Items.Add(item);
+
+
+
+            /*
             ListViewItem item = new ListViewItem(comboBox1.Text);
-            item.SubItems.Add(textBox2.Text);
+            item.SubItems.Add(Txt_quote.Text);
             listView1.Items.Add(item);
             PrintTot();   
+
+            */
         }
 
         public void PrintTot()
@@ -71,10 +81,17 @@ namespace Colletta
 
         private void button1_Click(object sender, EventArgs e) //button add
         {
+
+            p = new Persona(Txt_Nome.Text);
+            s = new Soldi(Double.Parse(Txt_quote.Text), Convert.ToString(comboBox_Currency.Text));
+
+
+            Add();
+            /*
             string ut="";
             string quota="";
             ut = comboBox1.Text;
-            quota += textBox2.Text;
+            quota += Txt_quote.Text;
             if (Double.Parse(quota) < 0)
             {
                 throw new Exception("invalid value");
@@ -82,7 +99,7 @@ namespace Colletta
             accounts[ut] += Double.Parse(quota);
 
             Add();
-
+            */
 
         }
 
@@ -115,7 +132,7 @@ namespace Colletta
             string ut = listView1.SelectedItems[0].SubItems[0].Text;
             double quote = Double.Parse(listView1.SelectedItems[0].SubItems[1].Text);
             double newq = 0;
-            newq = Double.Parse(textBox2.Text);
+            newq = Double.Parse(Txt_quote.Text);
             if (newq < 0)
             {
                 throw new Exception("invalid value");
@@ -135,7 +152,7 @@ namespace Colletta
             }
 
 
-            listView1.SelectedItems[0].SubItems[1].Text = textBox2.Text;
+            listView1.SelectedItems[0].SubItems[1].Text = Txt_quote.Text;
 
 
 
@@ -146,10 +163,11 @@ namespace Colletta
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             string ut = listView1.SelectedItems[0].SubItems[0].Text;
             string quote = listView1.SelectedItems[0].SubItems[1].Text;
-            comboBox1.Text = ut;
-            textBox2.Text = quote;
+            //comboBox1.Text = ut;
+            Txt_quote.Text = quote;
         }
     }
 }

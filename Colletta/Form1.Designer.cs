@@ -31,12 +31,14 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Txt_quote = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.Txt_Nome = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBox_Currency = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // listView1
@@ -58,26 +60,27 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(104, 50);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Inserisci";
+            this.button1.Text = "ADD";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 38);
+            this.label1.Location = new System.Drawing.Point(67, 33);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 17);
+            this.label1.Size = new System.Drawing.Size(42, 17);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Nome utente:";
+            this.label1.Text = "User:";
             // 
-            // textBox2
+            // Txt_quote
             // 
-            this.textBox2.Location = new System.Drawing.Point(119, 119);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 4;
+            this.Txt_quote.Location = new System.Drawing.Point(115, 121);
+            this.Txt_quote.Multiline = true;
+            this.Txt_quote.Name = "Txt_quote";
+            this.Txt_quote.Size = new System.Drawing.Size(117, 27);
+            this.Txt_quote.TabIndex = 4;
             // 
             // label2
             // 
@@ -86,7 +89,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 17);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Quota:";
+            this.label2.Text = "Quote:";
             // 
             // button2
             // 
@@ -94,22 +97,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(105, 49);
             this.button2.TabIndex = 6;
-            this.button2.Text = "Elimina";
+            this.button2.Text = "DELETE";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "NICOLA",
-            "FRED",
-            "OLPROFESUR",
-            "MARCO"});
-            this.comboBox1.Location = new System.Drawing.Point(119, 38);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 7;
             // 
             // label3
             // 
@@ -117,7 +107,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(730, 461);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 36);
+            this.label3.Size = new System.Drawing.Size(95, 29);
             this.label3.TabIndex = 8;
             this.label3.Text = "TOT: 0 ";
             // 
@@ -127,21 +117,52 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(105, 49);
             this.button3.TabIndex = 9;
-            this.button3.Text = "Modifica";
+            this.button3.Text = "EDIT";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // Txt_Nome
+            // 
+            this.Txt_Nome.Location = new System.Drawing.Point(115, 30);
+            this.Txt_Nome.Multiline = true;
+            this.Txt_Nome.Name = "Txt_Nome";
+            this.Txt_Nome.Size = new System.Drawing.Size(121, 27);
+            this.Txt_Nome.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(40, 79);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Currency:";
+            // 
+            // comboBox_Currency
+            // 
+            this.comboBox_Currency.FormattingEnabled = true;
+            this.comboBox_Currency.Items.AddRange(new object[] {
+            "EUR",
+            "USD",
+            "JPY"});
+            this.comboBox_Currency.Location = new System.Drawing.Point(115, 79);
+            this.comboBox_Currency.Name = "comboBox_Currency";
+            this.comboBox_Currency.Size = new System.Drawing.Size(121, 24);
+            this.comboBox_Currency.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 516);
+            this.Controls.Add(this.comboBox_Currency);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Txt_Nome);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.Txt_quote);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
@@ -159,12 +180,14 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox Txt_quote;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox Txt_Nome;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox_Currency;
     }
 }
 
