@@ -17,10 +17,7 @@ namespace Colletta
             InitializeComponent();
         }
         public bool first = true;
-        Dictionary<string, double> accounts = new Dictionary<string, double>();
-
-
-        Dictionary<Persona, Soldi> account = new Dictionary<Persona, Soldi>();
+        Dictionary<Persona, double> accounts = new Dictionary<Persona, double>();
 
 
         Persona p;
@@ -40,7 +37,7 @@ namespace Colletta
 
                 listView1.Columns.Add("UTENTI", 200);
                 listView1.Columns.Add("QUOTA", 100);
-
+                listView1.Columns.Add("VALUTA", 80);
 
             }
             
@@ -49,12 +46,18 @@ namespace Colletta
 
         public void Add()
         {
-            MessageBox.Show("helooo");
             string v = comboBox_Currency.Text;
             
             ListViewItem item = new ListViewItem(Txt_Nome.Text);
-            item.SubItems.Add(Txt_quote.Text +" "+ v);
+            item.SubItems.Add(Txt_quote.Text);
+            item.SubItems.Add(v);
             listView1.Items.Add(item);
+
+
+            
+            accounts.Add(p, s.importo);
+
+
 
 
 
@@ -70,7 +73,7 @@ namespace Colletta
         public void PrintTot()
         {
             tot = 0;
-            foreach (KeyValuePair<string, double> kvp in accounts)
+            foreach (KeyValuePair<Persona, double> kvp in accounts)
             {
                 //MessageBox.Show(Convert.ToString(kvp.Value));
                 tot += kvp.Value;
@@ -87,31 +90,15 @@ namespace Colletta
 
 
             Add();
-            /*
-            string ut="";
-            string quota="";
-            ut = comboBox1.Text;
-            quota += Txt_quote.Text;
-            if (Double.Parse(quota) < 0)
-            {
-                throw new Exception("invalid value");
-            }
-            accounts[ut] += Double.Parse(quota);
-
-            Add();
-            */
 
         }
 
 
         private void button2_Click(object sender, EventArgs e)//button Elimina
         {
-            string tot="";
-            string ut = listView1.SelectedItems[0].SubItems[0].Text;
-            string quote = listView1.SelectedItems[0].SubItems[1].Text;
+            p = new Persona(listView1.SelectedItems[0].SubItems[0].Text);
 
-
-            accounts[ut] -= Double.Parse(quote);
+            accounts.Remove(p);
 
 
             if (listView1.SelectedItems.Count > 0)
@@ -119,7 +106,7 @@ namespace Colletta
                 listView1.Items.Remove(listView1.SelectedItems[0]);
             }
 
-            PrintTot();
+            //PrintTot();
 
 
 
@@ -144,11 +131,11 @@ namespace Colletta
 
             if (quote < 0)
             {
-                accounts[ut] += (-quote);
+//accounts[ut] += (-quote);
             }
             else
             {
-                accounts[ut] -= quote;
+  //              accounts[ut] -= quote;
             }
 
 
@@ -164,10 +151,7 @@ namespace Colletta
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            string ut = listView1.SelectedItems[0].SubItems[0].Text;
-            string quote = listView1.SelectedItems[0].SubItems[1].Text;
-            //comboBox1.Text = ut;
-            Txt_quote.Text = quote;
+
         }
     }
 }
