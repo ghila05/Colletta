@@ -108,8 +108,11 @@ namespace Colletta
 
         private void button3_Click(object sender, EventArgs e)//modifica
         {
-            string ut = listView1.SelectedItems[0].SubItems[0].Text;
-            double quote = Double.Parse(listView1.SelectedItems[0].SubItems[1].Text);
+            p = new Persona(Txt_Nome.Text);
+            s = new Soldi(Double.Parse(Txt_quote.Text), comboBox_Currency.Text);
+
+            MessageBox.Show(p.Nome + s.Valuta + s.importo);
+
             double newq = 0;
             newq = Double.Parse(Txt_quote.Text);
             if (newq < 0)
@@ -117,17 +120,19 @@ namespace Colletta
                 throw new Exception("invalid value");
             }
 
+
+            /*
             quote -= newq;
 
-            //MessageBox.Show(Convert.ToString(quote));
+            MessageBox.Show(Convert.ToString(quote));
 
             if (quote < 0)
             {
-//accounts[ut] += (-quote);
+                accounts[ut] += (-quote);
             }
             else
             {
-  //              accounts[ut] -= quote;
+                accounts[ut] -= quote;
             }
 
 
@@ -137,6 +142,8 @@ namespace Colletta
 
 
             PrintTot();
+
+            */
 
         }
 
