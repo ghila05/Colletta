@@ -58,20 +58,12 @@ namespace Colletta
             accounts.Add(p, s.importo);
 
 
-
-
-
-            /*
-            ListViewItem item = new ListViewItem(comboBox1.Text);
-            item.SubItems.Add(Txt_quote.Text);
-            listView1.Items.Add(item);
-            PrintTot();   
-
-            */
         }
 
         public void PrintTot()
         {
+
+            //da riusare
             tot = 0;
             foreach (KeyValuePair<Persona, double> kvp in accounts)
             {
@@ -150,8 +142,9 @@ namespace Colletta
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-
+            Txt_Nome.Text = listView1.SelectedItems[0].SubItems[0].Text;
+            Txt_quote.Text = listView1.SelectedItems[0].SubItems[1].Text;
+            comboBox_Currency.Text = listView1.SelectedItems[0].SubItems[2].Text;
         }
     }
 }
