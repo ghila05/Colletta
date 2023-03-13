@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Colletta
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form 
     {
         public Form1()
         {
@@ -65,7 +66,7 @@ namespace Colletta
             tot = 0;
             foreach (KeyValuePair<Persona, Soldi> kvp in accounts)
             {
-                MessageBox.Show(kvp.Value.Valuta);
+               
 
                 if (kvp.Value.Valuta == "EUR")
                 {
@@ -90,7 +91,7 @@ namespace Colletta
 
             p = new Persona(Txt_Nome.Text);
             s = new Soldi(Double.Parse(Txt_quote.Text), Convert.ToString(comboBox_Currency.Text));
-            MessageBox.Show(Convert.ToString(s.Importo));
+          
 
             Add();
             PrintTot();
@@ -126,5 +127,15 @@ namespace Colletta
             Txt_quote.Text = listView1.SelectedItems[0].SubItems[1].Text;
             comboBox_Currency.Text = listView1.SelectedItems[0].SubItems[2].Text;
         }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            SortedDictionary<Persona, Soldi> temprino = new SortedDictionary<Persona, Soldi>(accounts);
+            accounts = new Dictionary<Persona, Soldi>(temprino);
+
+
+        }
+
+
     }
 }

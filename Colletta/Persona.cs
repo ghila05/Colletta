@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Colletta
 {
-    public class Persona : IEquatable<Persona>
+    public class Persona : IComparable<Persona>
     {
         string nome, id;
 
@@ -40,5 +40,9 @@ namespace Colletta
             return (Id, Nome).GetHashCode();
         }
 
+        public int CompareTo(Persona other)
+        {
+            return Nome.CompareTo(other.Nome);
+        }
     }
 }
