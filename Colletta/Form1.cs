@@ -17,17 +17,16 @@ namespace Colletta
             InitializeComponent();
         }
         public bool first = true;
-        Dictionary<Persona, double> accounts = new Dictionary<Persona, double>();
-
+        Dictionary<Persona, Soldi> accounts;
 
         Persona p;
         Soldi s;
-
-
         double tot;
-
+        double usd = 0.93;
+        double jpy = 0.0070;
         private void Form1_Load(object sender, EventArgs e)
         {
+            accounts = new Dictionary<Persona, Soldi>();
 
             if (first)//solo la prima volta che apro il programma
             {
@@ -55,22 +54,34 @@ namespace Colletta
 
 
             
-            accounts.Add(p, s.importo);
+            accounts.Add(p, s);
 
 
         }
 
         public void PrintTot()
         {
-
-            //da riusare
+            double s = 0;
             tot = 0;
-            foreach (KeyValuePair<Persona, double> kvp in accounts)
+            foreach (KeyValuePair<Persona, Soldi> kvp in accounts)
             {
-                //MessageBox.Show(Convert.ToString(kvp.Value));
-                tot += kvp.Value;
-            }
+                MessageBox.Show(kvp.Value.Valuta);
 
+                if (kvp.Value.Valuta == "EUR")
+                {
+                    tot += kvp.Value.Importo;
+                }
+                else if (kvp.Value.Valuta == "USD")
+                {
+                    tot += kvp.Value.Importo * usd;
+                }
+                else if (kvp.Value.Valuta == "JPY")
+                {
+                    tot += kvp.Value.Importo * jpy;
+                }
+ 
+            }
+           
             label3.Text = ("TOT: "+Convert.ToString(tot));
         }
 
@@ -79,9 +90,10 @@ namespace Colletta
 
             p = new Persona(Txt_Nome.Text);
             s = new Soldi(Double.Parse(Txt_quote.Text), Convert.ToString(comboBox_Currency.Text));
-
+            MessageBox.Show(Convert.ToString(s.Importo));
 
             Add();
+            PrintTot();
 
         }
 
@@ -98,53 +110,14 @@ namespace Colletta
                 listView1.Items.Remove(listView1.SelectedItems[0]);
             }
 
-            //PrintTot();
-
-
-
+            PrintTot();
 
 
         }
 
-        private void button3_Click(object sender, EventArgs e)//modifica
+        private void button3_Click(object sender, EventArgs e)
         {
-            p = new Persona(Txt_Nome.Text);
-            s = new Soldi(Double.Parse(Txt_quote.Text), comboBox_Currency.Text);
-
-            MessageBox.Show(p.Nome + s.Valuta + s.importo);
-
-            double newq = 0;
-            newq = Double.Parse(Txt_quote.Text);
-            if (newq < 0)
-            {
-                throw new Exception("invalid value");
-            }
-
-
-            /*
-            quote -= newq;
-
-            MessageBox.Show(Convert.ToString(quote));
-
-            if (quote < 0)
-            {
-                accounts[ut] += (-quote);
-            }
-            else
-            {
-                accounts[ut] -= quote;
-            }
-
-
-            listView1.SelectedItems[0].SubItems[1].Text = Txt_quote.Text;
-
-
-
-
-            PrintTot();
-
-            */
-
+          
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)

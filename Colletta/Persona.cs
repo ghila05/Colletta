@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Colletta
 {
-    public class Persona
+    public class Persona : IEquatable<Persona>
     {
         string nome, id;
 

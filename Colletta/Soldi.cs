@@ -8,8 +8,7 @@ namespace Colletta
 {
     public class Soldi
     {
-        public double importo;
-        public string valuta;
+
 
 
         public double Importo { get; set; }
