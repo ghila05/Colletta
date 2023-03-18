@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Colletta
 {
-    public class Soldi
+    public class Soldi : IComparable<Soldi>
     {
 
 
@@ -24,6 +24,9 @@ namespace Colletta
         }
 
 
-
+        public int CompareTo(Soldi other)
+        {
+            return Importo.CompareTo(other.Importo);
+        }
     }
 }
