@@ -62,7 +62,7 @@ namespace Colletta
 
         public void PrintTot()
         {
-            double s = 0;
+            
             tot = 0;
             foreach (KeyValuePair<Persona, Soldi> kvp in accounts)
             {
@@ -134,8 +134,29 @@ namespace Colletta
             accounts = new Dictionary<Persona, Soldi>(temprino);
 
 
+            Update();
         }
 
+        public void Update()
+        {
+            listView1.Items.Clear();
+            foreach (KeyValuePair<Persona, Soldi> kvp in accounts)
+            {
+                string[] val = new string[] { Convert.ToString(kvp.Key.Nome), Convert.ToString(kvp.Value.Importo), kvp.Value.Valuta };
 
+                ListViewItem item = new ListViewItem(val);
+                listView1.Items.Add(item);
+
+                
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SortedDictionary<Persona, Soldi> temprino = new SortedDictionary<Persona, Soldi>(accounts);
+            accounts = new Dictionary<Persona, Soldi>(temprino);
+
+            Update(); 
+        }
     }
 }
