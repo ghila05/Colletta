@@ -158,5 +158,22 @@ namespace Colletta
 
             Update(); 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            s = new Soldi(Double.Parse(Txt_search.Text), Combo_Valuta.Text);
+            foreach (KeyValuePair<Persona, Soldi> kvp in accounts)
+            {
+                if (kvp.Value.Importo == s.Importo)
+                {
+                    if(kvp.Value.Valuta == s.Valuta)
+                    {
+                        MessageBox.Show(kvp.Key.ToString());//devo ritornare la chiave associata a quel valore
+                    }
+                }
+
+
+            }
+        }
     }
 }

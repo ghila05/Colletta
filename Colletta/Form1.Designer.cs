@@ -40,6 +40,10 @@
             this.comboBox_Currency = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.Txt_search = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Combo_Valuta = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // listView1
@@ -47,7 +51,7 @@
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(347, 34);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(512, 413);
             this.listView1.TabIndex = 0;
@@ -56,8 +60,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(32, 398);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(62, 185);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(104, 50);
             this.button1.TabIndex = 2;
@@ -95,7 +99,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(143, 398);
+            this.button2.Location = new System.Drawing.Point(173, 185);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(105, 49);
@@ -148,7 +152,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(347, 462);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(171, 43);
             this.button3.TabIndex = 13;
@@ -166,11 +170,55 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(164, 338);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(92, 63);
+            this.button5.TabIndex = 15;
+            this.button5.Text = "SEARCH";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // Txt_search
+            // 
+            this.Txt_search.Location = new System.Drawing.Point(58, 338);
+            this.Txt_search.Multiline = true;
+            this.Txt_search.Name = "Txt_search";
+            this.Txt_search.Size = new System.Drawing.Size(100, 34);
+            this.Txt_search.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(36, 308);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(135, 17);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Search from money:";
+            // 
+            // Combo_Valuta
+            // 
+            this.Combo_Valuta.FormattingEnabled = true;
+            this.Combo_Valuta.Items.AddRange(new object[] {
+            "EUR",
+            "USD",
+            "JPY"});
+            this.Combo_Valuta.Location = new System.Drawing.Point(58, 377);
+            this.Combo_Valuta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Combo_Valuta.Name = "Combo_Valuta";
+            this.Combo_Valuta.Size = new System.Drawing.Size(100, 24);
+            this.Combo_Valuta.TabIndex = 18;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 516);
+            this.Controls.Add(this.Combo_Valuta);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.Txt_search);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.comboBox_Currency);
@@ -183,7 +231,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -206,6 +254,10 @@
         private System.Windows.Forms.ComboBox comboBox_Currency;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox Txt_search;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox Combo_Valuta;
     }
 }
 
