@@ -10,7 +10,6 @@ namespace Colletta
     {
 
 
-
         public double Importo { get; set; }
         public string Valuta { get; set; }
 

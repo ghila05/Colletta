@@ -54,9 +54,7 @@ namespace Colletta
             listView1.Items.Add(item);
 
 
-            
             accounts.Add(p, s);
-
 
         }
 
@@ -67,7 +65,6 @@ namespace Colletta
             foreach (KeyValuePair<Persona, Soldi> kvp in accounts)
             {
                
-
                 if (kvp.Value.Valuta == "EUR")
                 {
                     tot += kvp.Value.Importo;
@@ -101,6 +98,9 @@ namespace Colletta
 
         private void button2_Click(object sender, EventArgs e)//button Elimina
         {
+            if (String.IsNullOrEmpty(listView1.SelectedItems[0].SubItems[0].Text))
+                throw new Exception("Inserire almeno un campo");
+
             p = new Persona(listView1.SelectedItems[0].SubItems[0].Text);
 
             accounts.Remove(p);
@@ -163,7 +163,7 @@ namespace Colletta
             Update();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)// cerca utente che ha versato una certa valuta
         {
             if (String.IsNullOrEmpty(Txt_search.Text) || String.IsNullOrEmpty(Combo_Valuta.Text))
                 throw new Exception("Inserire un prezzo valido");
@@ -176,7 +176,7 @@ namespace Colletta
                     if(kvp.Value.Valuta == s.Valuta)
                     {
                         
-                        MessageBox.Show("La persona trovata è "+kvp.Key.Nome);//devo ritornare la chiave associata a quel valore
+                        MessageBox.Show("La persona trovata è "+kvp.Key.Nome);
                         return;
                     }
                 }
