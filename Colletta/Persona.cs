@@ -44,5 +44,10 @@ namespace Colletta
         {
             return Nome.CompareTo(other.Nome);
         }
+
+        public override string ToString()
+        {
+            return nome;
+        }
     }
 }

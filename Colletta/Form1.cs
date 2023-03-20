@@ -40,8 +40,8 @@ namespace Colletta
                 listView1.Columns.Add("VALUTA", 80);
 
             }
-            
 
+            
         }
 
         public void Add()
@@ -60,7 +60,7 @@ namespace Colletta
 
         }
 
-        public void PrintTot()
+        public void PrintTot() //conversioni
         {
             
             tot = 0;
@@ -128,7 +128,7 @@ namespace Colletta
             comboBox_Currency.Text = listView1.SelectedItems[0].SubItems[2].Text;
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
+        private void button3_Click_1(object sender, EventArgs e) // ordina alfabeticamentee
         {
             SortedDictionary<Persona, Soldi> temprino = new SortedDictionary<Persona, Soldi>(accounts);
             accounts = new Dictionary<Persona, Soldi>(temprino);
@@ -137,7 +137,7 @@ namespace Colletta
             Update();
         }
 
-        public void Update()
+        public void Update() // ristampa listview
         {
             listView1.Items.Clear();
             foreach (KeyValuePair<Persona, Soldi> kvp in accounts)
@@ -151,12 +151,17 @@ namespace Colletta
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) // ordina secondo l'importo
         {
-            SortedDictionary<Persona, Soldi> temprino = new SortedDictionary<Persona, Soldi>(accounts);
-            accounts = new Dictionary<Persona, Soldi>(temprino);
+            MessageBox.Show("helo");
+            Dictionary<Persona, Soldi> tmp = new Dictionary<Persona, Soldi>();
 
-            Update(); 
+            foreach (KeyValuePair<Persona, Soldi> val in accounts.OrderByDescending(x => x.Value.Importo))
+            {
+                tmp[val.Key] = val.Value;
+            }
+            accounts = new Dictionary<Persona, Soldi>(tmp);
+            Update();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -168,7 +173,8 @@ namespace Colletta
                 {
                     if(kvp.Value.Valuta == s.Valuta)
                     {
-                        MessageBox.Show(kvp.Key.ToString());//devo ritornare la chiave associata a quel valore
+                        p = new Persona(kvp.Key.ToString());
+                        MessageBox.Show(p.ToString());//devo ritornare la chiave associata a quel valore
                     }
                 }
 

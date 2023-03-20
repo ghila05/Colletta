@@ -22,6 +22,10 @@ namespace Colletta
             Valuta = valuta;
            
         }
+        public override string ToString()
+        {
+            return Importo + " " + Valuta;
+        }
 
 
         public int CompareTo(Soldi other)
