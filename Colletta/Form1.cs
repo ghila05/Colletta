@@ -153,7 +153,7 @@ namespace Colletta
 
         private void button4_Click(object sender, EventArgs e) // ordina secondo l'importo
         {
-            MessageBox.Show("helo");
+
             Dictionary<Persona, Soldi> tmp = new Dictionary<Persona, Soldi>();
 
             foreach (KeyValuePair<Persona, Soldi> val in accounts.OrderByDescending(x => x.Value.Importo))
@@ -166,6 +166,9 @@ namespace Colletta
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(Txt_search.Text) || String.IsNullOrEmpty(Combo_Valuta.Text))
+                throw new Exception("Inserire un prezzo valido");
+
             s = new Soldi(Double.Parse(Txt_search.Text), Combo_Valuta.Text);
             foreach (KeyValuePair<Persona, Soldi> kvp in accounts)
             {
@@ -173,13 +176,15 @@ namespace Colletta
                 {
                     if(kvp.Value.Valuta == s.Valuta)
                     {
-                        p = new Persona(kvp.Key.ToString());
-                        MessageBox.Show(p.ToString());//devo ritornare la chiave associata a quel valore
+                        
+                        MessageBox.Show("La persona trovata è "+kvp.Key.Nome);//devo ritornare la chiave associata a quel valore
+                        return;
                     }
                 }
 
 
             }
+            MessageBox.Show("nessun utente trovato");
         }
     }
 }
