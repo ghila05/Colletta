@@ -123,9 +123,8 @@ namespace Colletta
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Txt_Nome.Text = listView1.SelectedItems[0].SubItems[0].Text;
-            Txt_quote.Text = listView1.SelectedItems[0].SubItems[1].Text;
-            comboBox_Currency.Text = listView1.SelectedItems[0].SubItems[2].Text;
+            
+
         }
 
         private void button3_Click_1(object sender, EventArgs e) // ordina alfabeticamentee
